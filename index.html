@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>內部連結導覽</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+  <!-- 密碼鎖畫面：解鎖後由 gate.js 移除 -->
+  <div id="gate">
+    <form id="gateForm">
+      <h2>請輸入密碼</h2>
+      <input id="gatePw" type="password" autocomplete="current-password" required>
+      <button type="submit" class="btn primary">解鎖</button>
+      <p id="gateMsg"></p>
+    </form>
+  </div>
+
+  <header>
+    <h1>內部連結導覽</h1>
+    <div class="toolbar">
+      <!-- 搜尋框：輸入文字即可篩選連結 -->
+      <input id="search" type="text" placeholder="搜尋連結名稱…">
+      <!-- 切換「編輯模式」，開啟後才會出現新增／修改／刪除按鈕 -->
+      <button id="editToggle" class="btn">編輯模式：關</button>
+    </div>
+  </header>
+
+  <!-- 編輯模式時才顯示的工具列 -->
+  <div id="editBar" class="edit-bar">
+    <button id="addCategory" class="btn">＋ 新增分類</button>
+    <button id="copyCode" class="btn">複製程式碼（永久保存用）</button>
+    <button id="resetData" class="btn danger">還原預設</button>
+  </div>
+
+  <!-- 分類卡片會由 script.js 自動產生在這裡 -->
+  <main id="list"></main>
+
+  <!-- 新增／修改連結用的對話框 -->
+  <dialog id="dialog">
+    <form id="form">
+      <h3 id="dialogTitle">新增連結</h3>
+
+      <label>分類
+        <select id="fCat"></select>
+      </label>
+
+      <label>名稱
+        <input id="fName" type="text" required>
+      </label>
+
+      <label>網址或網路磁碟路徑
+        <input id="fUrl" type="text" required placeholder="https://… 或 \\伺服器\資料夾">
+      </label>
+
+      <div class="dialog-buttons">
+        <button type="button" id="cancelBtn" class="btn">取消</button>
+        <button type="submit" class="btn primary">儲存</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- 操作完成時的提示訊息 -->
+  <div id="toast"></div>
+
+  <!-- 加密後的連結資料＋解鎖程式（明碼原始檔在 src/，不上傳） -->
+  <script src="data.enc.js"></script>
+  <script src="gate.js"></script>
+</body>
+</html>

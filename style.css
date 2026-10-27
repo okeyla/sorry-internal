@@ -1,0 +1,260 @@
+/* ===== 整體版面 ===== */
+body {
+  margin: 0;
+  font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+  background: #f4f6f9;
+  color: #222;
+}
+
+/* ===== 頁首 ===== */
+header {
+  background: #1f3a5f;
+  color: #fff;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 12px;
+  font-size: 24px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#search {
+  flex: 1;
+  max-width: 400px;
+  min-width: 180px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+}
+
+/* ===== 通用按鈕 ===== */
+.btn {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #eee;
+}
+
+.btn.primary {
+  background: #1f3a5f;
+  color: #fff;
+  border-color: #1f3a5f;
+}
+
+.btn.danger {
+  color: #c0392b;
+  border-color: #e6b0aa;
+}
+
+/* 小尺寸按鈕（每筆連結後面的按鈕） */
+.btn.small {
+  padding: 3px 7px;
+  font-size: 12px;
+}
+
+/* ===== 編輯模式工具列（預設隱藏） ===== */
+.edit-bar {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 16px 0;
+}
+
+/* body 加上 editing 這個 class 時才顯示 */
+body.editing .edit-bar {
+  display: flex;
+}
+
+/* ===== 分類卡片排列（自動換行） ===== */
+#list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  padding: 20px 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 2px solid #e3e8ef;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  flex: 1;
+  margin: 0;
+  font-size: 18px;
+  color: #1f3a5f;
+}
+
+.empty {
+  color: #999;
+  font-size: 14px;
+}
+
+/* ===== 每一筆連結 ===== */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.item a {
+  flex: 1;
+  color: #0066cc;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.item a:hover {
+  text-decoration: underline;
+}
+
+/* 類型小標籤（網頁／磁碟） */
+.tag {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #e3f0ff;
+  color: #0066cc;
+  white-space: nowrap;
+}
+
+.tag.drive {
+  background: #fff1dc;
+  color: #b36b00;
+}
+
+/* ===== 新增／修改對話框 ===== */
+dialog {
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+  max-width: 460px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+dialog h3 {
+  margin: 0 0 14px;
+  color: #1f3a5f;
+}
+
+dialog label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+dialog input,
+dialog select {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* ===== 提示訊息 ===== */
+#toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  display: none;
+}
+
+/* ===== 密碼鎖畫面 ===== */
+body.locked header,
+body.locked .edit-bar,
+body.locked main {
+  display: none;
+}
+
+#gate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 16px;
+  background: #1f3a5f;
+}
+
+#gateForm {
+  background: #fff;
+  border-radius: 10px;
+  padding: 24px;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+#gateForm h2 {
+  margin: 0 0 14px;
+  color: #1f3a5f;
+  font-size: 20px;
+}
+
+#gatePw {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+#gateForm .btn {
+  width: 100%;
+}
+
+#gateMsg {
+  min-height: 1em;
+  margin: 10px 0 0;
+  color: #c0392b;
+  font-size: 14px;
+}
